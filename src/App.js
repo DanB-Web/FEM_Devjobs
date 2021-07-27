@@ -1,10 +1,16 @@
 import './App.scss';
+import { ApolloProvider } from '@apollo/client'
+import { client } from './utils/graphql'
+import JobsList from './components/JobsList';
 
 function App() {
+
   return (
-    <div className="App">
-        App
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <JobsList/>
+      </div>
+    </ApolloProvider> 
   );
 }
 
