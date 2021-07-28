@@ -1,0 +1,65 @@
+import { useState } from 'react'
+import '../styles/searchbar.scss'
+
+const SearchBar = ({ setFilterTerms}) => {
+
+  const initialFormState = {
+    searchTerm: '',
+    location: '',
+    fullTime: false
+  }
+
+  const [formState, setFormState] = useState(initialFormState)
+
+  const formStateHandler = (e) => {
+    const copy = {...formState}
+    const id = e.target.id
+    if (id === 'searchterm') copy.searchTerm = e.target.value
+    if (id === 'location') copy.location = e.target.value
+    if (id === 'fulltime') copy.fullTime = !copy.fullTime
+    setFormState(copy)
+  }
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault()
+    setFilterTerms(formState)
+  }
+
+  const clearFormHandler = () => {
+    setFormState(initialFormState)
+    setFilterTerms(initialFormState)
+  }
+
+  return (
+    <div className='searchbar-container'>
+      Searchbar
+      <form onSubmit={formSubmitHandler}>
+        <input 
+          value={formState.searchTerm} 
+          id='searchterm'
+          type='text' 
+          placeholder='Filter by title, company, expertise'
+          onChange={(e) => formStateHandler(e)}
+        ></input>
+        <input 
+          value={formState.location} 
+          id='location'
+          type='text' 
+          placeholder='Filter by location'
+          onChange={(e) => formStateHandler(e)}
+        ></input>
+        <input 
+          checked={formState.fullTime} 
+          id='fulltime'
+          type='checkbox'
+          onChange={(e) => formStateHandler(e)}
+        ></input>
+        <label>Full Time Only</label>
+        <button type='submit'>Search</button>
+        <button onClick={clearFormHandler}>Clear</button>
+      </form>
+    </div>
+  )
+}
+
+export default SearchBar

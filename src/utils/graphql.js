@@ -9,14 +9,22 @@ export const client = new ApolloClient({
     }),
       cache: new InMemoryCache()
   })
-  
-export const GET_JOBS =gql`
-query getJobs {
-    job {
-      companyByCompany {
-        companyName
-      }
+
+export const GET_JOBS = gql`
+query getJobs ($offset: Int) {
+    job (offset: $offset, limit: 6) {
       position
+        companyByCompany {
+          companyName
+          companyLocation
+          companyLogo
+          companyColor
+          companyApplyLink
+        }
+    description
+    postedAt
+    contract
     }
   }
 `
+  
