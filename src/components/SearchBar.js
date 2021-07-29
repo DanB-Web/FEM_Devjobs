@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { ReactComponent as Search } from '../assets/desktop/icon-search.svg'
+import { ReactComponent as Location } from '../assets/desktop/icon-location.svg'
 import '../styles/searchbar.scss'
 
 const SearchBar = ({ setFilterTerms}) => {
@@ -32,31 +34,40 @@ const SearchBar = ({ setFilterTerms}) => {
 
   return (
     <div className='searchbar-container'>
-      Searchbar
       <form onSubmit={formSubmitHandler}>
-        <input 
-          value={formState.searchTerm} 
-          id='searchterm'
-          type='text' 
-          placeholder='Filter by title, company, expertise'
-          onChange={(e) => formStateHandler(e)}
-        ></input>
-        <input 
+        <div className='search-term'>
+          <Search/>
+          <input 
+            value={formState.searchTerm} 
+            id='searchterm'
+            type='text' 
+            placeholder='Filter by title, company, expertise'
+            onChange={(e) => formStateHandler(e)}
+          ></input>
+        </div>
+        <div className='search-location'>
+          <Location/>
+          <input 
           value={formState.location} 
           id='location'
           type='text' 
           placeholder='Filter by location'
           onChange={(e) => formStateHandler(e)}
-        ></input>
-        <input 
-          checked={formState.fullTime} 
-          id='fulltime'
-          type='checkbox'
-          onChange={(e) => formStateHandler(e)}
-        ></input>
-        <label>Full Time Only</label>
-        <button type='submit'>Search</button>
-        <button onClick={clearFormHandler}>Clear</button>
+          ></input>
+        </div>
+        <div className='search-fulltime'>
+          <span>
+            <input 
+              checked={formState.fullTime} 
+              id='fulltime'
+              type='checkbox'
+              onChange={(e) => formStateHandler(e)}
+            ></input>
+            <label>Full Time Only</label>
+          </span> 
+          <button className='btn btn-1' type='submit'>Search</button>
+          <button className='btn btn-2' onClick={clearFormHandler}>Clear</button>
+        </div>   
       </form>
     </div>
   )

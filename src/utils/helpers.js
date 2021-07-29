@@ -10,7 +10,10 @@ export const searchObject = (job, searchTerm) => {
   const objValues = Object.values(job)
   objValues.forEach(element => {
     if (typeof element !== 'object' ) {
-      searchArray.push(element.toLowerCase()) 
+      //TYPE CHECK DUE TO ID FIELD
+      if (typeof element === 'string') { 
+        searchArray.push(element.toLowerCase()) 
+      }
     } else {
       for (const prop in element) {
           searchArray.push(element[prop].toLowerCase())

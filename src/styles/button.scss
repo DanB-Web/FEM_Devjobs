@@ -1,0 +1,25 @@
+.btn {
+  height: 3rem;
+  width: 6rem;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-1 {
+  color: #fff;
+  background-color: #5964e0;
+}
+
+.btn-1:hover {
+  background-color: #939bf4;
+}
+
+.btn-2 {
+  color: var(--button2-font);
+  background-color: var(--button2);
+}
+
+.btn-2:hover {
+  background-color: var(--button2-hover);
+}

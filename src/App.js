@@ -1,18 +1,39 @@
 import { useState, useEffect } from 'react';
-import { ApolloProvider } from '@apollo/client'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { useQuery } from '@apollo/client'
+import { GET_JOBS } from './graphql/GET_JOBS'
 import { searchObject, searchLocation, searchFullTime } from './utils/helpers'
-import { client } from './utils/graphql'
+import { trans } from './utils/darkMode'
+import Header from './components/Header'
 import JobsList from './components/JobsList';
+import JobDetail from './components/JobDetail'
 import './App.scss';
 
+const App = () => {
 
-function App() {
+  const [darkMode, setDarkMode] = useState(false)
 
   const [jobsList, setJobsList] = useState([])
   const [fetchOffset, setFetchOffset] = useState(0)
 
   const [filterTerms, setFilterTerms] = useState({})
   const [filteredList, setFilteredList] = useState([])
+
+  const {loading, error, data, refetch } = useQuery(GET_JOBS, {variables: { offset: fetchOffset }})
+
+  //SET JOBSLIST ON DATA FETCHS
+  useEffect(() => {
+    if (data) {
+      const { job } = data
+      if (jobsList.length !== 0) {
+        const copy = [...jobsList]
+        setJobsList([...copy, ...job])  
+      } else {
+        setJobsList(job)
+      } 
+    } 
+  // eslint-disable-next-line
+  }, [data])
 
   //SETUP ON INITIAL FETCH
   useEffect(() => {
@@ -29,6 +50,12 @@ function App() {
   // eslint-disable-next-line
   }, [filterTerms])
 
+  //PAGINATION
+  const loadMoreJobsHandler = () => {
+    setFetchOffset(fetchOffset + 6)
+    refetch()
+  }
+
   //SCROLL TO PAGE BOTTOM ON JOBSLIST UPDATE
   useEffect(() => {
     if (jobsList.length !== 6) {
@@ -36,19 +63,42 @@ function App() {
     }
   }, [jobsList])
 
+  //MODE TOGGLE
+  const toggleDarkMode = () => {
+    if (darkMode === false) {
+      trans();
+      setDarkMode(true);
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      trans();
+      setDarkMode(false);
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  }
+
   return (
-    <ApolloProvider client={client}>
-      <div className="App">
-        <JobsList
-          jobsList={jobsList}
-          setJobsList={setJobsList}
-          fetchOffset={fetchOffset}
-          setFetchOffset={setFetchOffset}
-          filteredList={filteredList}
-          setFilterTerms={setFilterTerms}
-        />
-      </div>
-    </ApolloProvider> 
+      <Router>
+        <div className="App">
+          <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+          <Switch>
+            <Route exact path="/"
+              render={props => <JobsList {...props}
+              jobsList={jobsList}
+              setJobsList={setJobsList}
+              filteredList={filteredList}
+              setFilterTerms={setFilterTerms}
+              loadMoreJobsHandler={loadMoreJobsHandler}
+              loading={loading}
+              error={error}
+              />}></Route>
+            <Route path="/job"
+              render={props => <JobDetail {...props}
+              />}></Route>  
+            <Redirect to="/"/>
+          </Switch>
+        </div>
+      </Router>
+   
   );
 }
 

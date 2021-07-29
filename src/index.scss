@@ -1,4 +1,28 @@
-body {
+html {
+  --violet: hsl(274, 100%, 50%);
+  --light-violet: hsl(235, 82%, 77%);
 
+  --background: hsl(210, 22%, 96%);
+  --tile: hsl(0, 0%, 100%);
+  --font: hsl(220, 29%, 10%);
+  --button2-font: #5964e0;
+  --button2: hsl(235, 70%, 87%);
+  --button2-hover: hsl(235, 82%, 77%);
 }
 
+html[data-theme="dark"] {
+  --background: hsl(220, 29%, 10%);
+  --tile: hsl(210, 5%, 22%);
+  --font: hsl(0, 0%, 100%);
+  --button2-font: #fff;
+  --button2: #3d444d;
+  --button2-hover: #9daec2;
+}
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 500ms !important;
+  transition-delay: 0 !important;
+}
