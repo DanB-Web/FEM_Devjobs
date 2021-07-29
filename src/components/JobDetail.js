@@ -42,7 +42,7 @@ const JobDetail = ({location}) => {
         </div>
         <div className='jobdetail-company-details'>
           <h3>{company.companyName}</h3>
-          <a href={`${company.companyWebsite}`} target='_blank'>Company Website</a>
+          <a href={`${company.companyWebsite}`} target='_blank' rel="noreferrer">Company Website</a>
         </div> 
         <button className='btn btn-2'>Company Site</button>
       </div>
