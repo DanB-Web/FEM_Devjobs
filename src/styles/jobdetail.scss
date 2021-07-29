@@ -1,0 +1,27 @@
+@import "./mixins.scss";
+
+.jobdetail-container {
+  max-width: 1100px;
+  width: 60%;
+  margin: auto;
+  position: relative;
+  .jobdetail-company {
+    position: relative;
+    top: -25px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--tile);
+    border-radius: 5px;
+    .jobdetail-company-logo {
+      @include flexCenter;
+      width: 100px;
+      height: 100px;
+      border-radius: 5px 0 0 5px;
+      img {
+        width: 60px;
+        //height: auto;
+      }
+    }
+  }
+}

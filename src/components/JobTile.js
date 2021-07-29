@@ -6,11 +6,12 @@ const JobTile = ({job}) => {
 
   const [iconUrl, setIconUrl] = useState(false)
 
-  const { companyName, companyLocation } = job.companyByCompany
+  const { companyName, companyLocation, companyColor } = job.companyByCompany
 
   const jobDetails = {
     pathname: '/job',
-    param1: job.id
+    param1: job.id,
+    param2: iconUrl
   }
 
   useEffect(() => {
@@ -26,10 +27,17 @@ const JobTile = ({job}) => {
   return (
     <div className='jobtile-container'>
       <Link to={jobDetails}>
-        {iconUrl && <img src={iconUrl} alt={`${companyName} svg`}/>}
-        <h3>{job.position}</h3>
-        <p>{companyName}</p>
-        <p>{companyLocation}</p>
+        <div className='icon-background' style={{backgroundColor: companyColor}}>
+          {iconUrl && <img src={iconUrl} alt={`${companyName} svg`}/>}
+        </div>
+        <div className='jobtile-details'>
+          <span>{job.postedAt} | {job.contract}</span>    
+          <h3>{job.position}</h3>
+          <p>{companyName}</p>
+        </div>
+        <div className='jobtile-location'>
+          <p>{companyLocation}</p>
+        </div>    
       </Link> 
     </div>
   )

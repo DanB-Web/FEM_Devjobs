@@ -11,6 +11,7 @@ export const GET_JOBS = gql`
           companyName
           companyLocation
           companyLogo
+          companyColor
       }
     }
   }

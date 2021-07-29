@@ -1,6 +1,7 @@
 import SearchBar from './SearchBar'
 import JobTile from './JobTile'
 import Alert from './Alert'
+import { BeatLoader } from 'react-spinners';
 import '../styles/jobslist.scss'
 
 const JobsList = (props) => {
@@ -8,7 +9,9 @@ const JobsList = (props) => {
   const { error, loading, loadMoreJobsHandler, filteredList, setFilterTerms } = props
   
   if (loading) {
-    return <div>Loading...</div>
+    return <div className="beat-loader">
+        <BeatLoader size={40} color={'#CDCDCD'}/>
+      </div>
   }
 
   if (error) {

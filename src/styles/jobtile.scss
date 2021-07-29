@@ -1,6 +1,51 @@
+@import "./mixins.scss";
+
 .jobtile-container {
-  border: 1px solid black;
-  width: 30%;
+  position: relative;
+  width: 32%;
+  height: 15rem;
   display: flex;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  background-color: var(--tile);
+  border-radius: 5px;
+  .icon-background {
+    @include flexCenter;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    top: -23px;
+    left: 20px;
+    border-radius: 5px;
+
+  }
+  .jobtile-details {
+    span,
+    p {
+      margin-top: 1rem;
+      color: #CDCDCD;
+    }
+    h3 {
+      margin-top: 1rem;
+      color: var(--font);
+    }
+  }
+  .jobtile-location {
+    margin-top: 3rem;
+    color: #5964e0;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .jobtile-container {
+    width: 48%;
+  }
+}
+
+@media only screen and (max-width: 670px) {
+  .jobtile-container {
+    width: 90%;
+  }
 }
