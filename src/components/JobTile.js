@@ -31,7 +31,7 @@ const JobTile = ({job}) => {
           {iconUrl && <img src={iconUrl} alt={`${companyName} svg`}/>}
         </div>
         <div className='jobtile-details'>
-          <span>{job.postedAt} | {job.contract}</span>    
+          <span>{job.postedAt} &bull; {job.contract}</span>    
           <h3>{job.position}</h3>
           <p>{companyName}</p>
         </div>

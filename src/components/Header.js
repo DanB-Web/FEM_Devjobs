@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Switch from 'react-switch'
 import { ReactComponent as Sun} from '../assets/desktop/icon-sun.svg'
 import { ReactComponent as Moon} from '../assets/desktop/icon-moon.svg'
@@ -7,7 +8,9 @@ const Header = ({ toggleDarkMode, darkMode }) => {
   return (
     <div className='header-container'>
       <div className='header-content'>
-      <h1>devjobs</h1>
+      <Link to={'/'}>
+        <h1>devjobs</h1>
+      </Link>
       <label>
           <Sun/>
           <Switch 

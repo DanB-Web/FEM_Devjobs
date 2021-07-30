@@ -6,7 +6,7 @@ import { searchObject, searchLocation, searchFullTime } from './utils/helpers'
 import { trans } from './utils/darkMode'
 import Header from './components/Header'
 import JobsList from './components/JobsList';
-import JobDetail from './components/JobDetail'
+import JobDetail from './components/JobDetails/JobDetail'
 import './App.scss';
 
 const App = () => {

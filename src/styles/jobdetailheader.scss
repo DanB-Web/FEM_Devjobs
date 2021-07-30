@@ -1,0 +1,42 @@
+@import "./mixins.scss";
+
+.detailheader-container {
+  width: 100%;
+  position: relative;
+  top: -25px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--tile);
+  border-radius: 5px;
+  .detailheader-logo {
+    @include flexCenter;
+    width: 120px;
+    height: 120px;
+    border-radius: 5px 0 0 5px;
+    img {
+      width: 60px;
+    }
+  }
+  .detailheader-details {
+    width: calc(70% - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 3rem;
+    h3 {
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      color: var(--font);
+    }
+    a {
+      color: #cdcdcd;
+    }
+  }
+  .detailheader-sitelink {
+    width: 30%;
+    @include flexCenter;
+    button {
+      width: 60%;
+    }
+  }
+}
