@@ -7,7 +7,7 @@ import DetailFooter from './DetailFooter'
 import Alert from '../Alert'
 import '../../styles/jobdetail.scss'
 
-const JobDetail = ({location}) => {
+const JobDetail = ({location, showApplyPortal}) => {
 
   const reqVariables = { variables: {id: location.param1}}
   const { loading, error, data } = useQuery(GET_JOB, reqVariables)
@@ -25,6 +25,10 @@ const JobDetail = ({location}) => {
     }
   }, [data])
 
+  const applyHandler = () => {
+    showApplyPortal(jobDetails)
+  }
+
   if (loading) {
   return <div className="beat-loader">
       <BeatLoader size={40} color={'#CDCDCD'}/>
@@ -34,8 +38,6 @@ const JobDetail = ({location}) => {
   if (error) {
     return <Alert message={error.message}></Alert>
   }
-
-  console.log(jobDetails)
 
   return (
     <>
@@ -52,7 +54,7 @@ const JobDetail = ({location}) => {
               <p>{company.companyLocation}</p>
             </div>
             <div className='jobdetail-apply'>
-              <button className='btn btn-1'>Apply Now!</button>
+              <button className='btn btn-1' onClick={applyHandler}>Apply Now!</button>
             </div>
           </section>
           <section className='jobDetail-requirements'>
@@ -62,7 +64,7 @@ const JobDetail = ({location}) => {
               <h3>Requirements</h3>
                 <p>{jobDetails.requirementsContent}</p>
                 <ul>   
-                {jobDetails.requirementsItems.map(item => (<li>{item}</li>))}
+                {jobDetails.requirementsItems.map((item, index) => (<li key={index}>{item}</li>))}
                 </ul>
               </div> : null}
             {jobDetails.roleContent ? 
@@ -70,13 +72,13 @@ const JobDetail = ({location}) => {
             <h3>What You Will Do</h3>
               <p>{jobDetails.roleContent}</p>
               <ul>
-                {jobDetails.roleContentItems.map(item => (<li>{item}</li>))}
+                {jobDetails.roleContentItems.map((item, index) => (<li key={index}>{item}</li>))}
               </ul>
             </div> : null}
           </section>
       </div>
     </div>
-      <DetailFooter jobDetails={jobDetails} company={company}/>
+      <DetailFooter jobDetails={jobDetails} company={company} applyHandler={applyHandler}/>
     </>
   )
 }

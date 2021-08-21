@@ -41,7 +41,7 @@ const SearchBar = ({ setFilterTerms}) => {
             value={formState.searchTerm} 
             id='searchterm'
             type='text' 
-            placeholder='Filter by title, company, expertise'
+            placeholder='Filter by keyword'
             onChange={(e) => formStateHandler(e)}
           ></input>
         </div>

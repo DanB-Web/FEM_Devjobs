@@ -1,6 +1,6 @@
 import '../../styles/jobdetailfooter.scss'
 
-export const DetailFooter = ({jobDetails, company}) => {
+export const DetailFooter = ({jobDetails, company, applyHandler}) => {
   return (
     <footer>
       <div className='footer-container'>
@@ -9,7 +9,7 @@ export const DetailFooter = ({jobDetails, company}) => {
           <p>{company.companyName}</p>
         </div>
         <div className='footer-button'>
-          <button className='btn btn-1'>Apply Now!</button>
+          <button className='btn btn-1' onClick={() => applyHandler()}>Apply Now!</button>
         </div>
       </div>
     </footer>

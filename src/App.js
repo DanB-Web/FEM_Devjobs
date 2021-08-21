@@ -5,20 +5,26 @@ import { GET_JOBS } from './graphql/GET_JOBS'
 import { searchObject, searchLocation, searchFullTime } from './utils/helpers'
 import { trans } from './utils/darkMode'
 import Header from './components/Header'
-import JobsList from './components/JobsList';
+import JobsList from './components/JobsList'
 import JobDetail from './components/JobDetails/JobDetail'
+import Backdrop from './components/Portals/Backdrop'
 import './App.scss';
 
 const App = () => {
 
   const [darkMode, setDarkMode] = useState(false)
 
-  const [jobsList, setJobsList] = useState([])
-  const [fetchOffset, setFetchOffset] = useState(0)
+  //PORTALS
+  const [viewApplyJob, setViewApplyJob] = useState(false)
+  const [viewMobileFilter, setViewMobileFilter] = useState(false)
 
+  const [jobsList, setJobsList] = useState([])
+  const [job, setJob] = useState({})
+  
   const [filterTerms, setFilterTerms] = useState({})
   const [filteredList, setFilteredList] = useState([])
-
+  
+  const [fetchOffset, setFetchOffset] = useState(0)
   const {loading, error, data, refetch } = useQuery(GET_JOBS, {variables: { offset: fetchOffset }})
 
   //SET JOBSLIST ON DATA FETCHS
@@ -56,6 +62,12 @@ const App = () => {
     refetch()
   }
 
+  //SHOW APPLY JOB PORTAL
+  const showApplyPortal = (jobDetails) => {
+    setViewApplyJob(true)
+    setJob(jobDetails)
+  }
+
   //SCROLL TO PAGE BOTTOM ON JOBSLIST UPDATE
   useEffect(() => {
     if (jobsList.length !== 6) {
@@ -79,6 +91,8 @@ const App = () => {
   return (
       <Router>
         <div className="App">
+        {viewApplyJob && <Backdrop job={job} setJob={setJob} viewApplyJob={viewApplyJob} setViewApplyJob={setViewApplyJob}/>}
+        {viewMobileFilter && <Backdrop viewMobileFilter={viewMobileFilter} setViewMobileFilter={setViewMobileFilter}/>}
           <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
           <Switch>
             <Route exact path="/"
@@ -93,6 +107,7 @@ const App = () => {
               />}></Route>
             <Route path="/job"
               render={props => <JobDetail {...props}
+              showApplyPortal={showApplyPortal}
               />}></Route>  
             <Redirect to="/"/>
           </Switch>

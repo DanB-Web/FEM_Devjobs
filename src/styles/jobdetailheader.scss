@@ -40,3 +40,29 @@
     }
   }
 }
+
+@media only screen and (max-width: 650px) {
+  .detailheader-container {
+    flex-direction: column;
+    align-items: center;
+    top: -10px;
+    .detailheader-logo {
+      position: absolute;
+      top: -15px;
+      width: 60px;
+      height: 60px;
+      border-radius: 5px;
+      img {
+        width: 30px;
+      }
+    }
+    .detailheader-details {
+      margin-top: 3rem;
+      padding: 0;
+      align-items: center;
+    }
+    .detailheader-sitelink {
+      display: none;
+    }
+  }
+}

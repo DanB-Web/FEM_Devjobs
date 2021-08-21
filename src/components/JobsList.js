@@ -23,7 +23,7 @@ const JobsList = (props) => {
         <SearchBar setFilterTerms={setFilterTerms}/>
       <div className='jobslist-list'>
         {filteredList.map(((job, index) => (
-          <JobTile key={index} job={job}></JobTile>
+          <JobTile key={job.position} job={job}></JobTile>
         )))}
       </div>
          <button

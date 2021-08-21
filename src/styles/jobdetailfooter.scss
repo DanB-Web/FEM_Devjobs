@@ -31,3 +31,47 @@ footer {
     }
   }
 }
+
+@media only screen and (max-width: 1300px) {
+  footer {
+    .footer-container {
+      width: 70%;
+      .footer-button {
+        button {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  footer {
+    .footer-container {
+      width: 85%;
+      .footer-button {
+        button {
+          width: 90%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  footer {
+    .footer-container {
+      width: 85%;
+      .footer-info {
+        display: none;
+      }
+      .footer-button {
+        width: 100%;
+        justify-content: center;
+        button {
+          width: 80%;
+        }
+      }
+    }
+  }
+}

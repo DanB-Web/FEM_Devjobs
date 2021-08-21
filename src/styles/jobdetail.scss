@@ -70,3 +70,33 @@
     }
   }
 }
+
+@media only screen and (max-width: 1300px) {
+  .jobdetail-container {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .jobdetail-container {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .jobdetail-container {
+    .jobdetail-info {
+      .jobdetail-top {
+        flex-direction: column;
+        .jobdetail-apply {
+          width: 100%;
+          margin-top: 1rem;
+          padding-right: 1.2rem;
+          button {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
