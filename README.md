@@ -65,11 +65,13 @@ The challenge is supplied with all the job details in a local JSON file, but I w
 
 The jobs and job views are populated by GraphQL queries, and I also added a GraphQL mutation for when someone applies for a job - a table in Hasura is populated with the applicants name, email, job role and company.
 
+Apollo also allowed me to practice with some GraphQL pagination, which was interesting - the home screen only loads 6 jobs initially, but then will load a further 6 on each fetch.
+
 The app is fully responsive, which created some challenges when implementing the search - in desktop mode, I could simply pass an object from the searchbar component, but the mobile view Figma layout split the search terms between a mobile search bar and a pop-up, which I implemented using a portal. In hindsight, I may have considered Redux so I could just throw all queries to an external action and not have to have so much logic in my views.
 
 I added a couple of extra peices of functionality to the app as I thought the UI was a little unintuitive - there was no provision to clear search terms, for example.
 
-There was also a challenge with populating the individual job detail components with the correct SVG, as they were still stored locally and not in the backend with the jod detail data. In the end, I had to write a function in the JobTile component to asyncronously read them from the file system at build time and populate the component, which was interesting. I found very little online as to how to do this, so I may add it to a blog sometime.
+There was also a challenge with populating the individual job detail components with the correct SVG, as they were still stored locally and not in the backend with the jod detail data. In the end, I had to write a function in the JobTile component to asyncronously read them from the file system at build time and populate the component, which was satisfying. I found very little online as to how to do this, so I may add it to a blog sometime.
 
 ## Author
 
