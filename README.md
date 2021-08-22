@@ -32,7 +32,11 @@ Users should be able to:
 
 ![](./devjobs-details.png)
 
-### Screenshot 2 - Mobile View
+### Screenshot 3 - Job Application Portal
+
+![](./devjobs-apply.png)
+
+### Screenshot 4 - Mobile View
 
 ![](./devjobs-mob.png)
 
