@@ -20,3 +20,19 @@
     bottom: 10%;
   }
 }
+
+@media only screen and (max-width: 1160px) {
+  .backdrop-container {
+    .backdrop-content {
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  .backdrop-container {
+    .backdrop-content {
+      width: 90%;
+    }
+  }
+}

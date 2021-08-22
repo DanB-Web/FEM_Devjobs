@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { ADD_APPLICANT } from '../../graphql/ADD_APPLICANT'
 import { BeatLoader } from 'react-spinners';
@@ -12,10 +12,6 @@ const ApplyJob = ({job}) => {
   const [company] = useState(job.companyByCompany.companyName)
 
   const [addApplicant, {data, loading, error}] = useMutation(ADD_APPLICANT)
-
-  useEffect(() => {
-    console.log(data)
-  }, [data])
 
   const formHandler = (e) => {
     const id = e.target.id

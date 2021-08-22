@@ -9,7 +9,7 @@ const Backdrop = (props) => {
   //APPLY JOB PROPS
   const {viewApplyJob, setViewApplyJob, job, setJob} = props
   //MOBILE FILTER PROPS
-  const {viewMobileFilter, setViewMobileFilter} = props
+  const {viewMobileFilter, setViewMobileFilter, filterTerms, setFilterTerms} = props
   
   const closePortalHandler = () => {
     if (viewApplyJob) {
@@ -23,10 +23,10 @@ const Backdrop = (props) => {
 
   return createPortal(
     <div className="backdrop-container">
-      <button className='btn btn-1 close-portal-btn' onClick={closePortalHandler}>CLOSE</button>
+      {viewApplyJob ? <button className='btn btn-1 close-portal-btn' onClick={closePortalHandler}>CLOSE</button> : null}
       <div className='backdrop-content'>
         {viewApplyJob ? <ApplyJob job={job}/> : null}
-        {viewMobileFilter ? <MobileFilter/> : null}
+        {viewMobileFilter ? <MobileFilter filterTerms={filterTerms} setFilterTerms={setFilterTerms} closePortalHandler={closePortalHandler}/> : null}
       </div>
     </div>, document.getElementById('backdrop-hook')
   );

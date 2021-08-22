@@ -1,0 +1,46 @@
+.mobilefilter-container {
+  height: 25vh;
+  background-color: var(--tile);
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    fieldset {
+      border: none;
+    }
+    .mobilefilter-location {
+      height: 8vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      border-bottom: 1px solid rgb(160, 157, 157);
+      input {
+        margin-left: 1rem;
+        border: none;
+        padding: 0.5rem;
+        font-size: 1.3rem;
+        color: var(--font);
+        background-color: transparent;
+      }
+    }
+    .mobilefilter-checkbox {
+      height: 8vh;
+      padding: 1rem;
+      width: 100%;
+      input[type="checkbox"] {
+        margin-left: 0.2rem;
+        transform: scale(1.5);
+      }
+      label {
+        margin-left: 1.5rem;
+        color: var(--font);
+        font-size: 1.2rem;
+      }
+    }
+    button {
+      width: 80%;
+      font-size: 1.3rem;
+    }
+  }
+}

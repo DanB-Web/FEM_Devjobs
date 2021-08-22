@@ -1,0 +1,39 @@
+.mobilesearch-container {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: -30px;
+  height: 4rem;
+  background-color: var(--tile);
+  border-radius: 5px;
+  padding: 1rem;
+  form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    input {
+      width: 50%;
+      border: none;
+      background-color: transparent;
+      color: var(--font);
+    }
+    .filter-btn {
+      width: 10%;
+      background: none;
+      border: none;
+    }
+    .search-btn {
+      width: 15%;
+    }
+    .clear-btn {
+      width: 15%;
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .mobilesearch-container {
+    display: block;
+  }
+}

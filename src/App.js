@@ -21,7 +21,11 @@ const App = () => {
   const [jobsList, setJobsList] = useState([])
   const [job, setJob] = useState({})
   
-  const [filterTerms, setFilterTerms] = useState({})
+  const [filterTerms, setFilterTerms] = useState({
+    searchTerm: '',
+    location: '',
+    fullTime: false
+  })
   const [filteredList, setFilteredList] = useState([])
   
   const [fetchOffset, setFetchOffset] = useState(0)
@@ -92,7 +96,7 @@ const App = () => {
       <Router>
         <div className="App">
         {viewApplyJob && <Backdrop job={job} setJob={setJob} viewApplyJob={viewApplyJob} setViewApplyJob={setViewApplyJob}/>}
-        {viewMobileFilter && <Backdrop viewMobileFilter={viewMobileFilter} setViewMobileFilter={setViewMobileFilter}/>}
+        {viewMobileFilter && <Backdrop viewMobileFilter={viewMobileFilter} setViewMobileFilter={setViewMobileFilter} filterTerms={filterTerms} setFilterTerms={setFilterTerms}/>}
           <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
           <Switch>
             <Route exact path="/"
@@ -100,7 +104,9 @@ const App = () => {
               jobsList={jobsList}
               setJobsList={setJobsList}
               filteredList={filteredList}
+              filterTerms={filterTerms}
               setFilterTerms={setFilterTerms}
+              setViewMobileFilter={setViewMobileFilter}
               loadMoreJobsHandler={loadMoreJobsHandler}
               loading={loading}
               error={error}

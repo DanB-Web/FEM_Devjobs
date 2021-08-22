@@ -43,16 +43,22 @@
   }
 }
 
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 1080px) {
   .searchbar-container {
     form {
       .search-term,
       .search-location {
-        width: 22%;
+        width: 25%;
       }
       .search-fulltime {
-        width: 56%;
+        width: 50%;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .searchbar-container {
+    display: none;
   }
 }

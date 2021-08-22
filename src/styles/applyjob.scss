@@ -45,3 +45,25 @@
   color: var(--font);
   @include flexCenter;
 }
+
+@media only screen and (max-width: 1000px) {
+  .applyjob-container-form {
+    form {
+      width: 80%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .applyjob-container-form {
+    h2 {
+      font-size: 1.2rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+    form {
+      width: 95%;
+    }
+  }
+}
